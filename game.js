@@ -4,28 +4,31 @@ const computerScoreSpan = document.querySelector('[data-computer-score]')
 const yourScoreSpan = document.querySelector('[data-computer-score]')
 const SELECTIONS = [
     {
-    name = 'rock',
-    emoji = 🗿 rock,
-    beats = 'scissors',
+    name: 'rock',
+    emoji: '🗿',
+    beats: 'scissors',
 },
 {
-    name = 'scissors',
-    emoji = ✂️ scissors,
-    beats = 'paper'
+    name: 'scissors',
+    emoji: '✂️',
+    beats: 'paper'
 },
 {
-    name = 'paper',
-    emoji = 📃 paper,
-    beats = 'rock'
+    name: 'paper',
+    emoji: '📃',
+    beats: 'rock'
 }
 ]
+
 selectionButtons.forEach(selectionButtons => {
-    selectionButton.addEventListener('click', e => {
-        const selectionName = selectionButton.dataset.selection
+    selectionButtons.addEventListener('click', e => {
+        const selectionName = selectionButtons.dataset.selection
         const selection = SELECTIONS.find(selection => selection.name === selectionName)
         makeSelection(selectionName)
+        console.log(selectionName);
     })
 })
+
 function makeSelection(selection){
     const computerSelection = randomSelection()
     const yourWinner = isWinner(selection, computerSelection)
@@ -63,8 +66,6 @@ function isWinner(selection, opponentSelection) {
         return selection.beats === opponent.name
     }
 
-    
-}
 
 function incrementScore(scoreSpan){
     scoreSpan.innerText = parseInt(scoreSpan.innerText) +1
